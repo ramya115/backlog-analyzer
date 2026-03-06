@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
     
     print("\n" + "█"*60, flush=True)
     print("  SASTRA INTELLIGENT ARREAR ANALYZER — BACKEND ONLINE", flush=True)
-    print("  API HOST: http://127.0.0.1:8000", flush=True)
+    print("  API HOST: https://backlog-analyzer-1.onrender.com", flush=True)
     print("   STATUS: Secured via Database-Driven Ownership Model", flush=True)
     print("█"*60 + "\n", flush=True)
     yield
@@ -51,10 +51,7 @@ app = FastAPI(
 # Allows your frontend (Port 3000) to securely talk to this backend (Port 8000).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
