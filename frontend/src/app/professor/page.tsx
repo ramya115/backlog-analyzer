@@ -111,7 +111,7 @@ export default function ProfessorPage() {
     if (!professorEmail) return;
     (async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/professor/reports?professor_email=${encodeURIComponent(professorEmail)}`);
+        const res = await fetch(`https://backlog-analyzer.onrender.com/professor/reports?professor_email=${encodeURIComponent(professorEmail)}`);
         if (res.ok) {
           const json = await res.json();
           setStoredReports(json.reports ?? []);
@@ -126,7 +126,7 @@ export default function ProfessorPage() {
     if (!professorEmail) return;
     (async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/professor/students?professor_email=${encodeURIComponent(professorEmail)}`);
+        const res = await fetch(`https://backlog-analyzer.onrender.com/professor/students?professor_email=${encodeURIComponent(professorEmail)}`);
         if (res.ok) {
           const json = await res.json();
           setLinkedStudents(json.students ?? []);
@@ -241,7 +241,7 @@ export default function ProfessorPage() {
     for (const f of state.notesFiles) fd.append("notes_files", f);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/professor/analyze-and-save", { method: "POST", body: fd });
+      const res = await fetch("https://backlog-analyzer.onrender.com/professor/analyze-and-save", { method: "POST", body: fd });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(body.detail ?? `HTTP ${res.status}`);
       setActionStates((prev) => ({
@@ -261,7 +261,7 @@ export default function ProfessorPage() {
     if (!window.confirm(`Reset "${name}"? This will delete all uploaded materials and analysis.`)) return;
     try {
       const res = await fetch(
-        `http://127.0.0.1:8000/professor/reset/${encodeURIComponent(code)}?professor_email=${encodeURIComponent(professorEmail)}`,
+        `https://backlog-analyzer.onrender.com/professor/reset/${encodeURIComponent(code)}?professor_email=${encodeURIComponent(professorEmail)}`,
         { method: "DELETE" }
       );
       if (!res.ok) throw new Error("Reset failed");
@@ -281,7 +281,7 @@ export default function ProfessorPage() {
     setShowAddSubject(true);
     setAllStudentsLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/professor/all-students");
+      const res = await fetch("https://backlog-analyzer.onrender.com/professor/all-students");
       if (res.ok) {
         const json = await res.json();
         setAllStudents(json.students ?? []);
@@ -306,7 +306,7 @@ export default function ProfessorPage() {
     setAddSubjectSaving(true);
     setAddSubjectError(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/professor/create-subject", {
+      const res = await fetch("https://backlog-analyzer.onrender.com/professor/create-subject", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -319,7 +319,7 @@ export default function ProfessorPage() {
       const body = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(body.detail ?? `HTTP ${res.status}`);
       // Refresh reports list and close modal
-      const rRes = await fetch(`http://127.0.0.1:8000/professor/reports?professor_email=${encodeURIComponent(professorEmail)}`);
+      const rRes = await fetch(`https://backlog-analyzer.onrender.com/professor/reports?professor_email=${encodeURIComponent(professorEmail)}`);
       if (rRes.ok) {
         const rJson = await rRes.json();
         setStoredReports(rJson.reports ?? []);

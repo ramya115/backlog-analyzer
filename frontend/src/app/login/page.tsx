@@ -91,7 +91,7 @@ export default function LoginPage() {
     setIsLoggingIn(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/student/login", {
+      const res = await fetch("https://backlog-analyzer.onrender.com/student/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

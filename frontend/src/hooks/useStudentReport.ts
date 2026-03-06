@@ -52,7 +52,7 @@ export function useStudentReport(
     setError(null);
 
     const params = new URLSearchParams({ subject_code: subjectCode });
-    const url = `http://127.0.0.1:8000/student/report?${params}`;
+    const url = `https://backlog-analyzer.onrender.com/student/report?${params}`;
     console.log("[useStudentReport] Fetching:", url);
 
     (async () => {

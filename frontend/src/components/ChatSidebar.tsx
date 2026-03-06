@@ -56,7 +56,7 @@ export default function ChatSidebar({ subjectCode, topicName, onClose }: ChatSid
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/student/chat", {
+      const res = await fetch("https://backlog-analyzer.onrender.com/student/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

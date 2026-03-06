@@ -37,7 +37,7 @@ async function openSourceFile(subjectCode: string, sourceName: string) {
   }
   try {
     const params = new URLSearchParams({ subject_code: subjectCode, source_name: sourceName });
-    const res = await fetch(`http://127.0.0.1:8000/student/file-url?${params}`);
+    const res = await fetch(`https://backlog-analyzer.onrender.com/student/file-url?${params}`);
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
       alert(body.detail ?? `The source file "${sourceName}" could not be found.`);
