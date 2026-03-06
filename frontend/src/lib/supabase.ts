@@ -22,7 +22,7 @@ export async function signInWithGoogle() {
       queryParams: {
         hd: "sastra.ac.in",   // restrict to SASTRA college domain
       },
-      redirectTo: "http://localhost:3000/dashboard",
+      redirectTo: "https://backlog-analyzer-1.onrender.com/dashboard", // production redirect URL
     },
   });
 
