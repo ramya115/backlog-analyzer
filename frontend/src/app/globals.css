@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Enable class-based dark mode for next-themes */
-@variant dark (&:is(.dark, .dark *));
-
 :root {
   --background: #ffffff;
   --foreground: #09090b;
@@ -15,12 +12,7 @@
   --foreground: #f4f4f5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Keep CSS variables simple — Tailwind dark mode is enabled via `dark` class */
 
 body {
   background: var(--background);
