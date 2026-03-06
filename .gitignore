@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.venv
+ENV/
+env/
+venv/
+ENV.bak/
+env.bak/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js / Frontend
+node_modules/
+npm-debug.log
+npm-debug.log.*
+yarn-debug.log
+yarn-debug.log.*
+pnpm-debug.log
+pnpm-debug.log.*
+lerna-debug.log
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+.nextjs
+.vercel
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env
+.env.*.local
+
+# OS
+Thumbs.db
+.DS_Store
+*.log
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
