@@ -1,0 +1,1929 @@
+<SYLLABUS>
+[Extraction Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}]
+</SYLLABUS>
+
+<NOTES>
+CSE313
+Cryptography & Network 
+Security
+Block Cipher and DES
+Ms.Ramya.S
+AP-III / SoC
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Block Cipher
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 2•Stream cipher
+⁃Encrypt digital data stream one bit or one byte at a time
+⁃Eg. Autokey vigenere cipher, vernam cipher
+⁃Because of drawback of these we go with block cipher
+•Block cipher
+⁃Block of PT treated as whole and produce CT block
+
+
+Motivation for Feistel cipher structure
+•In block cipher PT block of n -bit -> CT block of n -bit
+•Eg: There are 2𝑛possible different PT blocks and for the encryption must be 
+reversible ( iedecryption to be possible)
+•Number of different transformation is 2𝑛!
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 3
+
+
+Motivation for Feistel cipher structure
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+•General substitution for n=4
+•4-bit input -> 16 input states
+•That is mapped into unique one of 16 output
+combination
+•From these we get 4 -bit output
+•Also it is reversible 
+•Reversible mapping between PT and CT called
+“ideal block cipher” (Feistel –Reversible mapping)
+
+Motivation for Feistel cipher structure
+•Reversible substitution cipher for a large 
+block size is not practically possible
+•Hence transforming with key is only 
+possible Eg. For this key length is 
+(4 bits) x (16 rows) = 64 bits
+•In general 𝑛𝑥2𝑛𝑏𝑖𝑡𝑠
+•To achieve mapping by linear eqn.
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 5
+
+
+Feistel Cipher
+•Block cipher with key length k -bits and block size n -bits allows 2𝑘possible 
+transformation instead of 2𝑛
+•Uses two methods
+•Basic building block of cryptographic system
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 6
+
+Feistel Cipher Structure
+•Based on concept of invertible product cipher
+•Plain text block of length 2w -bits and key k -bits
+•Divide PL into two halves 𝐿0and 𝑅0
+•Data pass through n rounds of processing and combine to produce CT block
+•Each i-round -𝐿𝑖−1and 𝑅𝑖−1derived from previous round
+-subkey𝐾𝑖derived from key
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+
+Feistel Cipher
+•Substitution performed on left half of the data
+•This can be done by apply round function F to the right 
+side and XORed with left half of the data
+•Function denotes F( 𝑅𝑖,𝐾𝑖+1)where 𝑅𝑖-w-bits and sub 
+key 𝐾𝑖+1-y-bits and the function F produce w -bits
+•After this substitution, interchange (permutation) can be 
+done
+•So this structure is called “Substitution -Permutation 
+Network” –SPN structure
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+
+
+Feistel Cipher Design Principle
+•Block size 
+⁃increasing size improves security, but slows cipher 
+•key size 
+⁃increasing size improves security, makes exhaustive key searching harder, but may slow cipher 
+•number of rounds 
+⁃increasing number improves security, but slows cipher 
+•subkey generation 
+⁃greater complexity can make analysis harder, but slows cipher 
+•round function 
+⁃greater complexity can make analysis harder, but slows cipher 
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 9
+
+Feistel Cipher
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 10
+
+
+Data Encryption Standard (DES)
+•Data are encrypt in 64 -bit blocks 
+using a 56bit key
+•This algorithm transforms 64 -bit 
+input into 64 -bit output using 
+same key for both encryption and
+decryption
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 11
+
+
+Data Encryption Standard (DES)
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 12
+
+
+Data Encryption Standard (DES)
+•Key Expansion:
+•Key Side: key size=64 -bit. Assume : 133457799BBCDFF1
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 13
+Left circular shift
+Step 1: Discard every 8 -bit in the key
+Step 2: Rearrange the remaining 56 bits in some other form –Permuted Choice 1
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 14Data Encryption Standard (DES)
+•Round Calculation using PT
+•Assume PT = (0 1 2 3 4 5 6 7 8 9 A B C D E F)
+
+
+Data Encryption Standard (DES)
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 15
+
+
+Data Encryption Standard (DES)
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 16
+S-Box
+Permutation 
+P
+
+Data Encryption Standard (DES)
+•Advantages of DES
+⁃Avalanche effect –Small change in PT or key create large change in CT
+⁃Completeness effect –each bit if CT needs to depend many bits on the PT
+⁃S-box and D -box –provide confusion and diffusion
+•Design criteria
+⁃S –box are non-linear function
+⁃Each row of an s -box include all 16 possible output bit combination
+⁃One straight D -box (32 to 32) and one expansion D -box (32 to 48) –provide diffusion
+⁃Design of D -box for strengthen the S -box
+•Weakness : key size small. To overcome these by Triple DES
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 17
+
+DES Example for Practice
+•PT : 123456ABCD132536
+•Key : AABB09182736CCDD
+•R1 = 18CA18AD 5A78E394   K1 = 194CD072DE8C
+•R2 = 5A78E394 4A1210F6   K2 = 4568581ABCCE
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 18
+</NOTES>
+
+<NOTES>
+CSE313
+Cryptography & Network 
+Security
+Classical Encryption Techniques
+Ms.Ramya.S
+AP-III / SoC
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Symmetric Key Cipher
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 2•Symmetric encryption –conventional encryption –single key encryption
+•Form of cryptosystem –encand decperformed using same key
+
+Symmetric Key Cipher
+•5 ingredients for symmetric encryption scheme
+⁃Plain text  -message
+⁃Cipher text –combination of PT and SK
+⁃Enciphering or encryption  -subs or transpose
+⁃Deciphering or decryption –reverse of enc
+⁃Secret key –used to convert new form
+•Process of converting PT to CT –enciphering
+•Restore PT from CT –deciphering
+•Technique deciphering without knowledge of enciphering technique -
+cryptanalysis
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 3
+
+Symmetric Key Cipher
+•Simplified model of symmetric encryption 
+•Basic requirement for secure use of symmetric encryption
+⁃Need strong encryption algorithm
+⁃Sender and receiver must share the secret key in secured manner
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+
+
+Model of Symmetric Cryptosystem
+•With message X and encryption key K as input
+•Algorithm forms Y –cipher text
+•Where X = [X1,X2… Xn] and 
+Y = [Y1,Y2… Yn] and K = [K1,K2..Kn]
+•So, Y = E [ K,X]
+•For recovery, X = D[K,Y]
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 5
+
+Cryptographic System
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 6Type operation 
+performed for 
+transferring PT to CTNumber of key usedWay of plain text 
+processedCryptographic systems 
+characterized
+SubstitutionSymmetric key Asymmetric keyBlock cipher Stream cipher Transposition
+
+Cryptanalysis
+•Science and art of breaking codes
+•Study of cryptanalysis help to create better secret codes
+•Four types of cryptanalysis attack
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+
+Cipher text only Attack
+•Adversary get cipher text
+•Try to find key and plain text
+•Methods
+⁃Brute –Force attack –exhaustive attack
+⁃Statistical attack –benefit from characteristics of plain text language
+⁃Pattern attack
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+
+Known Plain text Attack
+•Adversary has some plaintext/ ciphertext pair
+•In addition to intercepted cipher
+•Analysis of previous pair relation find the key
+•Called known plaintext attack
+•To overcome by changing the key 
+frequently
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 9
+
+Chosen Plain text / Cipher text Attack
+•Chosen Plain text Attack
+•Similar to known -plaintext attack
+•PT/CT pair chosen by the attacker
+•By chosen PT E made analysis
+•But much less likely to happen
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 10
+•Chosen Cipher text Attack
+•Similar to chosen Plaintext attack
+•PT/CT pair chosen by the attacker 
+•By chosen CT E made analysis 
+
+
+Symmetric Encryption Scheme
+•Encryption algorithm must meet the one or both the following criteria
+⁃Cost of breaking cipher > value of encrypted information
+⁃Time required to break > useful lifetime of the information
+•Brute Force Attack
+⁃Involves trying every possible key until an intelligible translation of the ciphertext
+into plaintext is obtained
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 11
+
+Substitution Technique
+•Substitution technique is one in which the letters of plaintext are replaced by other letters 
+or by numbers or symbols
+⁃Caesar cipher
+⁃Monoalphabetic cipher
+⁃Playfair cipher
+⁃Hill cipher
+⁃Polyalphabetic cipher
+⁃Vigenere cipher
+⁃Vernam cipher
+⁃One-time pad
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 12
+
+Caesar cipher
+•Replacing each letter of the alphabet with the letter standing k places further down 
+the alphabet
+•General form : C = E( K,P) = (P+K) mod 26
+•K is range from 1 to 25
+•Decryption : P = D(K,C) = (C -K) mod 26
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 13
+
+
+Caesar cipher
+•Merit : Simple algorithm
+•Demerit : 
+⁃Encryption and decryption algorithm known
+⁃only 25 keys to try. So brute force attack is possible
+⁃Language of PT is known and easily recognizable
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 14
+
+Monoalphabetic Cipher
+•Each character is replaced with any one of 25 character set
+•There are n! permutation of a set of n -elements possible
+•Plain text : a b c  
+•Cipher text : S  A  H
+•Assume : w=O, e=I, l=Z, c=R, m=Q, o=S
+•Welcome : OIZRSQI
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 15
+
+Monoalphabetic Cipher
+•Merit:
+⁃It eliminate brute force attack for cryptanalysis. Because of permutation combination 
+is 26!, there are 4x10^26 possible keys used
+•Demerit:
+⁃Easy to break because they reflect the 
+frequency of data of original alphabet
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 16
+
+Monoalphabetic Cipher
+•For cryptanalysis:
+•From above cipher text there are 120 letters
+•The frequency of letters are ( Eg.Letter P frequency is 16/120*100 = 13.33)
+•By comparing the frequency of characters we can get
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 17
+
+
+Playfair Cipher
+•Multiple -letter encryption cipher
+•Diagrams in the plaintext –single unit
+•That unit translate into cipher text diagrams
+•It uses 5 x 5 matrix
+•Aplaintext message is split into pairs of two letters ( digraphs)
+•If there is an odd number of letters, a ‘x’ is added to the last letter
+•Assume Message is : hide money
+•Key is : tutorials
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 18
+
+
+Playfair Cipher
+•Rules
+⁃If both the letters are in the same column, take the letter below each one (going back to the top if at the 
+bottom)
+⁃If both letters are in the same row, take the letter to the right of each one (going back to the left if at 
+the farthest right)
+⁃If neither of the preceding two rules are true, form a 
+rectangle with the two letters and take the letters on the 
+horizontal opposite corner of the rectangle.
+⁃If same characters are repeated continuously in a pair
+then that is separated with a fill character ‘x’
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 19
+
+
+Playfair Cipher
+•Merit:
+⁃Great advantage over monoalphabet –only 26 characters , but here 676 diagrams are 
+used
+⁃So identification of individual diagram is 
+difficult
+•Demerit:
+⁃Easy to break because it still leaves structure
+of plaintext language intact
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 20
+
+
+Hill Cipher
+•Polyalphabetic cipher or polygraphic cipher
+•Belongs to the block ciphers
+•Concepts based on Linear algebra
+•Mathematically 𝑀𝑀−1=𝐼where M –square matrix, I –identity matrix
+•If matrix A =
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 21
+
+Hill Cipher
+•Extended Euclidean Algorithm:
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 22
+
+Hill Cipher
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 23
+
+Hill Cipher
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 24
+
+Hill Cipher
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 25
+
+Hill Cipher
+•General Algorithm
+⁃For M successive PT and substitution for M CT letters
+⁃Substitution determined by linear equation with each character is assigned by (a=0, 
+b=1….z=25)
+⁃For M=2, the system is 𝐶1=(𝐾11𝑃1+𝐾21𝑃2)mod 26 and 𝐶2=(𝐾12𝑃1+𝐾22𝑃2)
+mod 26 
+⁃For M=3, the system is 𝐶1=(𝐾11𝑃1+𝐾21𝑃2+𝐾31𝑃3)mod 26, 𝐶2=(𝐾12𝑃1+
+𝐾22𝑃2+𝐾32𝑃3)mod 26 and 𝐶3=(𝐾13𝑃1+𝐾23𝑃2+𝐾33𝑃3)mod 26 
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 26
+
+Hill Cipher
+•For 3 character example:
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 27
+
+Hill Cipher
+•Advantage:
+⁃Completely hides single letter frequency
+⁃It is strong against “ Cipher text only” attack
+•Disadvantage:
+⁃It is easy to break by “Known plain text” attack
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 28
+
+Modular Arithmetic
+•If a and n is positive integer, then remainder r = a mod n
+•When a is divide by n, q -quotient, then a = qn+ r,  0 <= r < n
+•r is the range of 0 to n -1 in the set 𝑍𝑛
+•For modulo operation, remainder sign = divisor sign
+•Eg: -10 mod -3 = -1 or 10 mode -3 = -2
+•Properties:
+⁃(a + b) mod n = [a mod n + b mod n] mod n
+⁃(a -b) mod n = [a mod n -b mod n] mod n
+⁃(a * b) mod n = [a mod n * b mod n] mod n
+⁃a power b mod n = [(a mod n) power b ] mod n
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 29
+
+Polyalphabetic Cipher
+•For a single PT, different monoalphabets are used
+•Set of related monoalphabetic substitution rule is used
+•Key determines which rule is chosen for the transformation
+•Vigenere Cipher:
+⁃Simplest polyalphabetic cipher
+⁃This related with caesar cipher with shift
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 30
+
+Vigenere Cipher
+•Merit:
+⁃Multiple CT letters for each plain text
+•Demerit:
+⁃It depends on the length of the key. If key is small , repetitive nature. Using the 
+cryptanalysis can find the letters using its frequency of characters.
+•To overcome the drawback by using “Auto key system” (ie) key word is 
+concatenate with plain text.
+⁃Again some character may be identified using frequency distribution analysis.
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 31
+
+Vernam Cipher
+•It works based on binary data (bits) instead of letters
+•𝑐𝑖=𝑝𝑖⨁𝑘𝑖
+•𝑝𝑖-ith binary digit of PT
+•𝑘𝑖-ith binary digit of key
+•𝑐𝑖-ith binary digit of CT
+•⨁-exclusive -or(XOR) operator
+•For decryption -𝑝𝑖=𝑐𝑖⨁𝑘𝑖
+•A long key leads formidable cryptanalysis difficulties.
+•It can be broken with CT, the use of known or probable PT sequence or both
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 32
+
+
+One-time pad (OTP) Cipher
+•Random key as long as message 
+•Key is used for encryption + decryption
+•No standard format followed in plain text and cipher text. 
+•Totally random
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 33
+
+
+One-time pad (OTP) Cipher
+•Practical difficulties:
+⁃Required millions of random characters on regular basis
+⁃Key distribution, storage and protection
+⁃Because of this limitation, one -time pad is useful primarily for low -bandwidth 
+channels requiring very high security
+⁃One-time pad –Perfect Secrecy
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 34
+
+Transposition Techniques
+•Mapping done by means of permutation on the plain -text
+•Changes the PT position
+•Two types : Rail fence and Key Columnar transposition
+•Rail fence technique 
+⁃PT written as sequence of diagonals and the read off as a sequence of rows
+⁃Eg: PT –meet me after the toga party
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 35
+
+Transposition Techniques
+•Key Columnar Transposition
+⁃Write the message in rectangular form, ( ie) row by row and read the message column 
+by column also permute the column
+⁃Key : 4312567 and PT : attack postponed until two am
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 36
+
+Transposition Techniques
+•Pure transposition cipher is easily recognized because it has the same letter 
+frequencies as the original plain text
+•For digram and trigram frequency tables are used to break the secrecy
+•To overcome by performing more than one stage of transposition 
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 37
+
+Rotor Machine
+•Machine consist of set of independent rotating cylinders through which electric 
+pulses can flow
+•Each cylinder has 26 input and26 output 
+pin
+•Internal connection between the pins are 
+unique
+•A single cylinder defines a 
+monoalphabetic substitution
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 38
+
+
+Steganography
+• Plain text message hidden 
+Cryptography Steganography
+•Some of the characters are over written using invisible pen/pencil
+•Using invisible ink conceal the information –it can view by means of chemicals 
+or heat applied on it
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 39
+</NOTES>
+
+<NOTES>
+CSE313
+Cryptography & Network 
+Security
+Ms.Ramya.S
+AP-III / SoC
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Objective
+•to learn the need for cryptography and network 
+security algorithm
+•apply security principles to system design
+•to identify and investigate network security threads 
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 2
+
+Syllabus
+•Unit –I
+•Computer Network security concept
+•Classical encryption technique
+•Black cipher and DES
+•Unit –II
+•Introduction to number theory
+•AES
+•Block cipher operation
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 3
+
+Syllabus
+•Unit –III
+•Public key cryptography and RSA
+•System Security and cyber law
+•Unit –IV
+•Cryptographic hash function
+•MAC & Digital signature
+•Transport layer security
+•e-Mail security
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+
+Unit –I Learning Objective
+•Recall security concepts, security attacks
+•Classify and compare cryptographic algorithms
+•Choose an appropriate one for a given application
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 5
+
+Unit –I Syllabus
+•Computer and Network Security Concepts
+•Computer security concepts
+•Security attacks, services and mechanism
+•Fundamental security design principle
+•Attack surfaces
+•Model for Network security and standards
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 6
+
+Introduction
+•Computer Security Concept
+⁻Computer Security :collection of tool/software mech. –design 
+to protect data from hacker, tamperer or unwanted third party
+⁻Cryptography : Transform data -make sure that travel in 
+secured manner in the network
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+
+Introduction
+•Cryptography
+•Mangling information into apparent unintelligibility
+•Allowing a secret method of un -mangling
+•Mathematical techniques related to information security
+•About secure communication in the presence of adversaries
+•Cryptanalysis
+•The study of methods for obtaining the meaning of encrypted 
+information without accessing the secret information
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+
+Introduction
+•To achieve the security
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 9
+
+
+Confidentiality
+•Concealment of information or resources
+•Eg: Sender and Receiver only knows the information
+Data Confidentiality
+•All information -data collected, stored, and by whom 
+and to whom –may not be disclosed
+Privacy
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 10
+
+Integrity
+•Data Integrity
+•Ensure –program/data change by only authorized manner
+•System Integrity
+•Ensure –a system performance and its function unimpaired 
+(not damaged) manner
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 11
+
+Availability
+•Ensure that system properly work for authorized user
+•Ensure timely & reliable access to use information
+•These three concepts –CIA triad
+•In addition to this two more security requirements are
+•Authenticity
+•Accountability
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 12
+
+Computer Network Security Requirement
+•Authenticity:
+•It is identification and assurance of the 
+origin of information (check the request 
+received from the valid source/person)
+•Accountability:
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 13
+•Must trace a security breach to a responsible party
+•System must keep records of their activity to permit later 
+forensic analysis to trace security breach  
+
+Challenges of Computer Security
+•Security not simple 
+•Attacks designed different ways –looking weakness of the security mechanism
+•Simple security mechanism is not enough
+•Needed to decide where to use them
+•Security mechanism –not only particular algorithm or protocol
+•Possession of some secret information
+•Creation, distribution, and protection of secret info.
+•Time management also important
+•Attacker –need loophole of design, but designer find and eliminate all these flaws
+•User and system manager need less space for security
+•Security need –regular and constant monitor
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 14Physical placement
+Logical sense
+
+OSI Security Architecture
+•One manager need to organize, evaluate, and choose various security on their 
+requirement
+•Central systematic approach for security architecture is ITU -T standardization 
+X.800 for security architecture for OSI
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 15OSI Architecture
+focus onSecurity attacks -action that compromise the security of info. 
+owned by organization
+Security Mechanism -A process that designed to detect, prevent 
+and recover from attacks 
+Security Services -Information transfer of an organization 
+based on security
+
+Security Attacks
+Attacks
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 16Passive Attacks Active Attacks
+Attempts to learn/make 
+use of information from 
+the system
+Do not affect their 
+operationAttempts to alter system 
+resources/affect their 
+operation
+Release of 
+messageTraffic 
+analysisReplayMasquerade
+Modification 
+of messageDenial of 
+Service
+
+Passive Attack
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 17
+•Telephone conversation
+•E-mail message
+•Secret file transfer
+•Third party observe pattern
+•Observe the frequency and length of the message 
+being exchanged
+•Passive attacks difficult is detect
+•To prevent by encryptionRelease of message contents
+Traffic Analysis
+
+Active Attack
+18
+ CSE313 –CRYPTOGRAPHY & NETWORK SECURITY
+
+Active Attack
+19
+ CSE313 –CRYPTOGRAPHY & NETWORK SECURITY
+
+Security Services
+•X.800 -security service as a service that is provided by a protocol layer of 
+communicating open systems
+•Processing or communication service that is provided by a system to give a 
+specific kind of protection to system resources
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 20
+
+Security Services
+•Authentication –ensure communication between valid entity
+•Access Control –prevention of unauthorized use of resource
+•Data confidentiality –protection of data from unauthorized entity
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 21
+
+Security Services
+•Data Integrity -assurance that data received are exactly as sent by an authorized 
+entity. (no modification, insertion, deletion or replay)
+•Nonrepudiation –provide  protection against denial by one of the entity involved 
+in a communication
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 22
+
+Security Mechanism
+•Encipherment
+•Digital signature
+•Access control
+•Data integrity
+•Authentication exchange
+•Traffic padding
+•Routing control
+•Notarization
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 23
+
+
+Fundamental Design Security Priciples
+•Economy of mechanism –design security measures in both hardware and software should be SIMPLE
+•Fail-safe defaults –failure situation, design mechanism give full access permission for easy detection of failure
+•Complete mediation –Access details must be stored on cache
+•Open design –security design mechanism should be open
+•Separation of privilege –multiple privilege attributes are required for restricted resources
+•Least privilege –role based access control is best for good security design
+•Least common mechanism –minimize the function shared by difference user 
+•Psychological acceptability –security design should not hinder user work or application 
+•Isolation 
+•Encapsulation 
+•Modularity 
+•Layering
+•Least astonishment
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 24
+
+Attack surface and tree
+•An attack surface analysis is a useful technique for assessing the scale and severity 
+of threats to a system
+•Once an attack surface is defined, designers may be able to find ways to make the 
+surface smaller, thus making the task of the adversary more difficult
+•An attack tree is a branching, hierarchical data structure that represents a set of 
+potential techniques for exploiting security vulnerabilities
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 25
+
+Attack Tree
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 26
+
+
+Model for Network Security
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 27
+
+
+Model for Network Security
+•Basic task to designing a particular security services
+•Design an algorithm for performing the security -related 
+transformation
+•Generate the secret information to be used with the algorithm
+•Develop methods for the distribution and sharing of the secret 
+information
+•Specify a protocol to be used by the two principals that makes use 
+of the security algorithm and the secret information to achieve a 
+particular security service
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 28
+
+Security Standards
+•National Institute ofStandards and Technology :NIST isaU.S.federal
+agency that deals with measurement science, standards, and technology
+related toU.S.government useandtothepromotion ofU.S.private -sector
+innovation
+•Internet Society :ISOC isaprofessional membership society with
+worldwide organizational andindividual membership
+•ITU-T:The International Telecommunication Union (ITU) isan
+international organization within theUnited Nations System inwhich
+governments andtheprivate sector coordinate global telecom networks and
+services .ITU-Tcovers allfield oftelecommunication
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 29
+</NOTES>
+
+<NOTES>
+CSE 313
+Cryptography & Network 
+Security
+Unit –II 
+Advanced Encryption Standard(AES )
+Ms.Ramya.S
+AP-III / SoCCSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 2•AES is a block cipher intended to replace DES for commercial applications
+•It was 128-bit block size and key size of 128, 192, or 256 bits.
+•It does not use Feistel structure
+•Instead each full round consists of 4 separate functions
+⁃Byte substitution
+⁃Permutation
+⁃Arithmetic operation over a finite field
+⁃XOR with a key
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 3•AES was published by National Institute of Standards and Technology(NIST)
+•It is a symmetric block cipher
+•Compared public key ciphers such as RSA, AES is quite complex
+•In AES all operations are performed on 8-bit (byte operation)
+•Arithmetic division, multiplication, addition and subtraction based on finite field 
+GF(2^8)
+•AES use arithmetic in finite field with the irreducible polynomial 
+m(x)=x^ 8+x^4+x^3+x+1
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 5
+
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 6
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+•Not a Feistel structure
+•Expanded key provide 44 32 -bit words w[ i]
+•Four different stages used –one permutation, 3 substitution
+•Substitution bytes –Uses S -box perform byte by byte 
+substitution
+•Shift Row –A simple permutation
+•MixColumn –A substitution makes use of arithmetic over 
+𝐺𝐹(28)
+•Add round key –A Simple bitwise XOR of the current 
+block with portion of expanded key 
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+•Structure is quite simple
+•Cipher begins with add round key followed by 9 rounds, 
+each include 4 stages
+•Tenth round have 3 stages
+•Add round key –vernam cipher
+•Other three stages provide
+⁃Confusion
+⁃Diffusion
+⁃Non-linearity
+•Decryption algo make use of expanded key in reverse order
+•Decryption algo is not identical to the encryption algorithm
+•Final round of both encryption & decryption consists of 
+only three stages 
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 9•Substitution Byte Transformation:
+⁃Forward substitution byte transformation called 
+subBytes
+⁃16 x 16 matrix of byte values called –S-Box
+⁃Each individual byte of state is mapped into new byte
+⁃Leftmost 4-bits of byte –row,
+⁃Rightmost 4-bits of byte –column
+⁃These row and column select unique new S -Box 8-bit 
+value
+
+
+Advanced Encryption Standard -AES
+•Construction of S -Box
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 10
+
+
+Advanced Encryption Standard -AES
+•Construction of S -Box
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 11
+
+
+Advanced Encryption Standard -AES
+•Construction of Inverse S -Box
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 12
+
+
+Advanced Encryption Standard -AES
+•Construction of Inverse S -Box
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 13
+
+
+Advanced Encryption Standard -AES
+•Construction of Inverse S -Box
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 14
+
+
+Advanced Encryption Standard -AES
+•Advantage Of S -Box
+⁃Designed to resist “know cryptanalysis attack ”
+⁃Low relation between input and output
+⁃Output is non -linear
+⁃Non-linearity –multiplicative inverse
+⁃S-Box is inverse but not self -inverse
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 15
+
+Advanced Encryption Standard -AES
+•Shift row transformation (Forward transformation):
+⁃1strow of state is not altered
+⁃2ndrow 1 byte circular left shift
+⁃3rdrow 2 bytes circular left shift
+⁃4throw 3 bytes circular left shift
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 16
+
+Advanced Encryption Standard -AES
+•Inverse Shift row transformation :
+⁃1strow of state is not altered
+⁃2ndrow 1 byte circular right shift
+⁃3rdrow 2 bytes circular right shift
+⁃4throw 3 bytes circular right shift
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 17
+
+Advanced Encryption Standard -AES
+•Mix column transformation :
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 18
+
+
+Advanced Encryption Standard -AES
+•Mix column transformation :
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 19
+
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 20Advanced Encryption Standard -AES
+
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 21Advanced Encryption Standard -AES
+
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 22Advanced Encryption Standard -AES
+
+•Add Round Key Transformation:
+⁃128 –bits of state XORed with 128-bits Round key
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 23Advanced Encryption Standard -AES
+
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 24•AES Key Expansion
+⁃Takes input of 4 word key and produce linear array of 44-words
+⁃Initially key is copied into first 4 words of expanded key
+⁃Each word w[ i] depends on the immediately proceeding word
+⁃For 0thround, first 4 words of expanded key is used
+⁃For next consecutive rounds last word of each round is 
+transformed using function g
+⁃That output can be XORed with previous round 1stword 
+⁃Remaining words are XORed with previous consecutive word
+⁃This can be repeated for 10 rounds
+
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 25•g function
+⁃The last word from the previous round should be taked
+⁃Bytes in the word should be left shifted
+⁃After shifting, apply S -Box for each byte
+⁃Then the result can be XORed with the Round Constant RCj
+
+
+Advanced Encryption Standard -AES
+CSE 313 –CRYPTOGRAPHY & NETWORK SECURITY 26
+</NOTES>
+
+<NOTES>
+UNIT –II
+Block Cipher Operation
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Block Cipher Operation
+•Multiple encryption technique –an encryption algorithm is used multiple times
+•Eg: Double DES 
+•Simplest form 
+•C = E(K2,E(K1,P))
+•Decryption requires that the keys be applied in reverse order
+•P = D(K1,D(K2,C))
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 2
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 3Block Cipher Operation
+•Drawback of  Double DES is Meet in the middle attack
+•Meet in the middle attack 
+
+Block Cipher Operation
+•Another example is Triple DES
+•Uses only two keys by encrypt -decrypt -encrypt (EDE) sequence
+•Currently 3DES with two keys is a relatively popular
+•There are no practical cryptanalytic attacks on 3DES
+•The cost of  a brute -force key search on  3DES is on  the order of  
+2112≈ (5 x 1033) and estimates that the cost of  differential 
+cryptanalysis suffers an exponential growth, compared to single 
+DES, exceeding 1052
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+
+Block Cipher Operation
+•Block Cipher
+•A block cipher takes a fixed -length block of  text of  length b -bits and a key 
+as input and produces a b -bit block of  ciphertext . 
+•It process the data block by block. 
+•There are 5 modes of  operation in block cipher technique
+•Electronic Code Book -ECB
+•Cipher Block Chaining -CBC
+•Cipher Feedback -CFB
+•Output Feedback -OFB
+•Counter –CTR
+•ECB –Electronic Code Book
+•Each block of64plaintext bits isencoded independently using thesame
+key.
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 5
+
+Block Cipher Operation
+•The simplest mode is the electronic codebook (ECB) mode, in which 
+plaintext is handled one block at a time and each block of  plaintext is 
+encrypted using the same key
+•The plaintext consists of  a sequence of  b -bit blocks, P1,P2,….PNthe 
+corresponding cipher block is C1,C2…CN
+•Cj= E( K,Pj) j = 1,….,N,    Pj= D( K,Cj) j = 1,….,N
+•The ECB method is ideal for a short amount of  data, such as an encryption 
+key . 
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 6
+
+Block Cipher Operation
+•Advantages
+•This mode is simple in implementation
+•Biterrors occurred bynoisy channels only affect therespective block, they
+donotaffect theother blocks
+•Allblocks areexecuted inparallel
+•Disadvantages
+•Inthis mode two identical plain text blocks occur atthesame distance will
+produce same cipher text value, hence known plaintext attack ispossible
+•Security services arebeing compromised bytheintruder using known plain
+text attack
+•CBC –Cipher Block Chaining
+•Plain text isdivided into n–blocks
+•Atthebeginning initialization vector (IV) denoted asC0isused inthefirst
+block
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+
+Block Cipher Operation
+•The input totheencryption algorithm istheXOR ofthecurrent plaintext
+block and thepreceding cipher -text block ;thesame key isused foreach
+block
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+
+Block Cipher Operation
+•Advantage
+•It is the more secure way of  encryption and decryption because of  IV
+•Disadvantage
+•Each block implemented in serially not in parallel
+•Require more computational time to encrypt and decrypt
+•Counter Feedback Modes (CFB)
+•It is stream cipher method
+•It eliminates the need of  padding on to the message
+•Use b -bits shift register
+•Encryption AES/DES can be used. For AES –b is 128 bits DES –b is 64 
+bits
+•In this CFB method unit of  transmission is s -bits (Common value is 8 -bit)
+•Instead dividing block into b -bits, here divide into segments of  s -bits.
+•Input to the encryption by b -bit shift register and initially stored IV bitsCSE313 –CRYPTOGRAPHY & NETWORK SECURITY 9
+
+Block Cipher Operation
+•IVand Key isencrypted used any algorithm and from that, leftmost s-bits
+areEXORed with P1produce first C1(s-bits)
+•The content ofshift register isshifted leftbys-bitsandinserted C1onto it
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 10
+
+Block Cipher Operation
+•Output Feedback Mode (OFB)
+•Similar toCFB
+•But output ofencryption function isfedback totheshift register inOFB
+•OFB operates fullblocks ofplaintext andciphertext notonans-bits
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 11
+
+Block Cipher Operation
+•Advantage
+•Biterrors intransmission donotpropagate
+•Disadvantage
+•More vulnerable toamessage stream text modification attack .That is
+complementing abitinacipher text complements thecorresponding bitin
+therecovered plaintext also.
+•Counter Mode (CTR)
+•This mode isused ATM (Asynchronous Transfer Mode) network security
+andIpsec (IPSecurity)
+•Counter sizeisequal toplaintext size
+•Plain text isdivided into n-blocks
+•Using same keyused forallblocks anddifferent counter value canbeused
+•Each counter value isencrypted with keyand EXORed with PTproduce
+CT
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 12
+
+Block Cipher Operation
+•Advantage
+•Hardware efficiency –parallel processing ispossible
+•Software efficiency
+•Preprocessing
+•Random access
+•Provable security
+•Simplicity
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 13
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 14XTS -AES Mode
+•XTS -AES Mode forBlock -Oriented Storage Devices
+•Developed byIEEE Security inStorage Working Group
+•This standard describes amethod ofencryption fordata stored insector -based ondevices
+•Also possible access tostored data bytheadversary
+•Tweakable Block Ciphers
+•XTS -AES mode isbased ontheconcept ofa“Tweakable Block Cipher”
+•Ithasthree inputs
+•Aplain text
+•Symmetric keyK
+•Tweak T
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 15•Tweakable Block Ciphers
+•C=E(K,T,P)
+•T–need nottobesecret
+•K–provide security
+•T–provides variablility
+•Usedifferent tweaks with same Pandsame K
+•F or encryption, 𝐶=𝐻(𝑇)⨁𝐸(𝐾,𝐻(𝑇)⨁𝑃)where Hisahash function
+•ForDecryption,
+XTS -AES Mode
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 16Block Cipher Operation
+•Operation onaSingle Block
+•This operation involves two instances ofAES algorithm
+with twokeys
+
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 17•Operation onaSingle Block
+XTS -AES Mode
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 18•Operation onaSector
+•PTofasector ordata unit isorganized into 128bits
+•The lastblocks may becontain from 1to127bits
+•Instead ofpadding thelastblock –thisalgorithm uses ciphertext -stealing technique
+•That is𝑃𝑚−1-lastfullPTblock and𝑃𝑚isthefinal PTblock
+•𝐶𝑚−1-lastfullCTblock and𝐶𝑚-final CTblock with s-bits
+•Advantages ofXTS -AES mode
+•This mode islikeCTR mode, itissuitable forparallel operation
+•Unlike CTR mode, thismode includes anonce aswell asacounter .XTS -AES Mode
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 19
+XTS -AES Mode
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 20
+</NOTES>
+
+<NOTES>
+CSE313
+Cryptography & Network 
+Security
+Unit –II 
+Introduction to Number Theory
+Ms.Ramya.S
+AP-III / SoCCSE313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Divisibility
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 2•Number theory, linear algebra and algebraic structure
+•Divisibility
+⁃Non zero b divides a if, a= qb
+•Properties
+⁃a | 1, then a = ±1
+⁃If a | b & b | a, then a = ±b
+⁃Any b ≠0 divides 0  (b | 0)
+⁃a| b and b | c, then a | c
+⁃If b | g and b | h then, b | ( mg+nh )
+
+Division Algorithm
+•Any positive integer n and any non -negative integer a,
+if divide a by n, we get q –quotient and r –remainder, then 
+a = qn+ r,    0 ≤r <n  and q = ⌊a/n⌋
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 3
+
+Euclidean Algorithm
+•Determine GCD of 2 positive integers
+•Two relatively prime, if their only common positive integer factor is 1
+•c –positive integer is said to be GCD of a and b if
+⁃c is a divisor  of a and b
+⁃Any divisor of a and b is a divisor of c
+•gcd(a,b) = max[k, such that k | a and k | b]
+•gcd(a,-b) = gcd(-a,b) = gcd(-a,-b)
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+
+Euclidean Algorithm
+•In terms of equation.
+⁃Calculate which satisfies
+𝑟1= a mod b a = 𝑞1𝑏+𝑟1
+𝑟2= b mod 𝑟1 b= 𝑞2𝑟1+𝑟2
+𝑟3= 𝑟1mod 𝑟2 𝑟1= 𝑞3𝑟2+𝑟3
+.
+.
+𝑟𝑛= 𝑟𝑛−2mod 𝑟𝑛−1 𝑟𝑛−2= 𝑞𝑛𝑟𝑛−1+𝑟𝑛
+𝑟𝑛+1= 𝑟𝑛−1mod 𝑟𝑛= 0 𝑟𝑛−1= 𝑞𝑛+1𝑟𝑛+0
+GCD( a,b) = 𝑟𝑛
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 5
+
+Euclidean Algorithm
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 6
+
+Euclidean Algorithm
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+
+Modular Arithmetic
+•Two integers a and b are said to be “Congruent modulo n” if
+a mod n = b mod n, then a ≡b mod n
+•Properties of congruence
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 9
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 10Modular arithmetic exhibits the properties:
+[a mod n + b mod n] mod n = ( a+b) mod n
+[a mod n –b mod n] mod n = (a -b) mod n
+[a mod n x b mod n] mod n = (a x b) mod n
+Proof:
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 11
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 12Modular Arithmetic Problems :
+Find the following:
+1. 12315𝑚𝑜𝑑 218
+2. 9820𝑚𝑜𝑑 73
+3. 4627𝑚𝑜𝑑 357
+4. 32512𝑚𝑜𝑑 226
+5. 102523𝑚𝑜𝑑 1537
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 13
+•Modular addition and multiplication –modulo 8
+
+
+Modular Arithmetic
+•Perform arithmetic with residues
+•Set 𝑍𝑛-as the set of non negative integers less than n
+•𝑍𝑛={0,1,2,….(n -1)}
+•Finding smallest non -negative integer to which k is congruent modulo n is called 
+“reducing k modulo n”
+•Properties of modular arithmetic for integers in 𝑍𝑛
+⁃Commutative law
+⁃Associative law
+⁃Distributive law
+⁃Identities 
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 14
+
+Extended Euclidean Algorithm
+•Used for encryption algorithm 
+•For an integers a and b which satisfies the equation
+ax + by = d = gcd(a,b)  
+•(ie) For given integers a and b, the smallest possible positive value of ax + by is 
+equal to gcd(a,b)
+•Using Extend the Euclidean algorithm to determine ( x,y,d ) given a and b
+•For each step i, we can find integers 𝑥𝑖and 𝑦𝑖that satisfies 𝑟𝑖= a𝑥𝑖+𝑏𝑦𝑖
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 15
+
+Extended Euclidean Algorithm
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 16
+
+Euclidean Algorithm
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 17
+
+Modular Arithmetic
+•Fermat’s Theorem
+⁃Fermat’s theorem states that if p is prime and a is a positive integer not divisible by p 
+then
+𝑎𝑝−1≡1𝑚𝑜𝑑 𝑝
+⁃Alternative form of theorem 
+𝑎𝑝≡𝑎𝑚𝑜𝑑 𝑝
+•Euler’s Totient Theorem
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 18
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 19
+
+Modular Arithmetic
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 20
+
+Finite Fields
+•Groups, rings and field –abstract algebra –common algebraic structure
+•Abstract algebra –set of elements can operate algebraically
+•Operations are subject to specific rule
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 21
+
+
+Group
+•Group G, sometimes denoted by { G, },
+•Set of elements with a binary operation denoted by
+⁃(A1) Closure: If a and b belong to G, then a b is also in G
+⁃(A2) Associative: a  ∙(b ∙c) = (a ∙b) ∙c for all a, b, c in G. 
+⁃(A3) Identity element: There is an element e in G such that
+a ∙e = e ∙a = a for all a in G
+⁃(A4) Inverse element: For each a in G, there is an element a′ in G
+such that a ∙a′ = a′ ∙a = e
+•If a group has a finite number of elements, it is referred to as a finite group
+•Order of the group is equal to the number of elements in the group
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 22
+
+
+Groups
+•Abelian Group
+⁃A group is said to be abelian if it satisfies the following additional condition
+⁃(A5) Commutative: a ∙b = b ∙a for all a, b in G
+⁃The set of integers (positive, negative, and 0) under addition is an abelian group
+⁃The set of nonzero real numbers under multiplication is an abelian group
+•Cyclic Group
+⁃Subgroup of a group can be generated using power of an element called cyclic 
+subgroup
+⁃𝑎𝑛=𝑎.𝑎.𝑎.….𝑎(𝑛𝑡𝑖𝑚𝑒𝑠 )
+⁃𝑎0=𝑒and 𝑎−𝑛= (𝑎′)𝑛where 𝑎′inverse element of a
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 23
+
+Rings
+•R –ring denoted by { R,+,x } –two binary operation, addition & multiplication
+•Along with group properties it includes
+⁃Closure under multiplication : a and b ∈ R then ab ∈ R
+⁃Associative of multiplication : a( bc) = (ab)c,  all a,b,c ∈ R
+⁃Distributive law : a( b+c) = ab + ac
+•Commutative ring: A ring is said to be commutative which obeys 
+⁃ab = bafor all a,b∈ R
+•Integral domain within the commutative ring obey
+⁃Multiplicative identity : a1 = 1a = a
+⁃No zero divisor : If a,b∈ R and ab = 0 then either a=0 or b=0
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 24
+
+Field
+•Denoted by {F, +, x}
+•It obey all properties if Group and Ring
+•Also it should satisfy
+⁃Multiplicative inverse : 
+a ∈ F, except 0, there is a element 𝑎−1∈ F such that 𝑎𝑎−1=𝑎−1𝑎=1
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 25
+•Denoted by {F, +, x}
+•It obey all properties if Group and Ring
+•Also it should satisfy
+⁃Multiplicative inverse : 
+a ∈ F, except 0, there is a element 𝑎−1∈ F such that 𝑎𝑎−1=𝑎−1𝑎=1
+
+Finite field form GF(p)
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 26•Finite Field of order P
+⁃For a prime p, we define finite field of order p, GF(p) as the set of 𝑍𝑝of integers 
+{0,1,2….p -1} together with arithmetic operation modulo p
+
+Finite Field
+•Properties of GF(p)
+⁃GF(p) consists of p elements
+⁃Binary operation over the set is possible
+⁃Each element of set other than 0 has a multiplicative inverse
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 27
+
+Ordinary Polynomial
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 28
+
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 29
+</NOTES>
+
+<NOTES>
+CSE313Cryptography & Network SecurityUnit – III Elliptic Curve Cryptography
+Ms.Ramya.S
+AP-III / SoC
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+1
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+2
+ECC is an approach to public key cryptography based on algebraic structure of elliptic curves over finite field
+This cryptography based on a special manipulation (called multiplication or addition) of points of elliptic curves 
+Advantages
+Shorter key is sufficient for level of security than in the case of usual cryptography
+Shorter key result considerable saving in hardware implementation
+Factorization and discrete algorithm do not work for ECC
+
+Elliptic Curve Cryptography
+An elliptic curve E is the graph of points of the plane curve defined by the Weierstrass equation
+
+Defined by two variable with coefficient
+Variables and coefficients are restricted to elements in a finite field
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+3
+Elliptic Curve Cryptography
+Rules for addition over EC
+O serve as the additive identity P + O = P
+Negative P is –P = (x,-y) => P + (-P) = O
+P + Q = -R
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+4
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+5
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+6
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+7
+Elliptic Curve Arithmetic
+In elliptic curve arithmetic over finite field Zp
+Point addition in EC over Zp
+
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+8
+Elliptic Curve Arithmetic
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+9
+Elliptic Curve Arithmetic
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+10
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+11
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+12
+Elliptic Curve Point Calculation
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+13
+Elliptic Curve Point Calculation
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+14
+Elliptic Curve Point Calculation
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+15
+Elliptic Curve Point Calculation
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+16
+Elliptic Curve Arithmetic
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+17
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+18
+Elliptic Curve Key Exchange Algorithm (Diffie Hellman Method)
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+19
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+20
+Elliptic Curve Cryptography
+Find the curve equation
+Find the points on the curve using residue method (Set)
+ Find Point addition and Point multiplication
+Implement this arithmetic operation on Key sharing algorithm or Enc/Dec process
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+21
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+22
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+23
+Elliptic Curve Cryptography
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+24
+Pseudo Random Number Generation based on Asymmetric cipher
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+25
+PRNG Based on RSA
+Asymmetric encryption algorithm produce random output and that can be used generate PRNG
+Asymmetric approach is useful for creating a pseudorandom function (PRF) for generating a short pseudorandom bit sequence
+For a sufficient key length, the RSA algorithm is considered secure and is a good candidate to form the basis of a PRNG
+
+Pseudo Random Number Generation based on Asymmetric cipher
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+26
+Pseudo Random Number Generation based on Asymmetric cipher
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+27
+Pseudo Random Number Generation based on Asymmetric cipher
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+28
+</NOTES>
+
+<NOTES>
+CSE313Cryptography & Network SecurityUnit – III Malicious Software, Intruder, Firewall
+Ms.Ramya.S
+AP-III / SoC
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+1
+Malicious Software
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+2
+It is a software that intentionally included or inserted in a system for a harmful purpose
+Virus – A piece of software that infect other programs by modifying them
+Worms – that replicate itself and send copy from computer to computer across network connection
+DoS attack – It is attempt to prevent legitimate users of a service from using that service.
+Distributed DoS – Attack from multiple sources 
+Malicious Software
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+3
+Malicious Software
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+4
+Backdoor or Trapdoor
+Malicious Software
+Logic Bombs
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+5
+Malicious Software
+Trojan Horse
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+6
+Malicious Software
+Virus
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+7
+Malicious Software
+Virus Classification
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+8
+ boot sector
+ file infector
+ macro virus
+ encrypted virus
+ stealth virus
+Malicious Software
+E-mail Virus
+more recent development
+e.g. Melissa
+exploits MS Word macro in attached doc
+if attachment opened, macro activates
+sends email to all on users address list and does local damage
+then saw versions triggered reading email
+hence much faster propagation
+
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+9
+Malicious Software
+Virus Countermeasures
+prevention - ideal solution but difficult
+realistically need:
+detection
+identification
+removal
+if detect but can’t identify or remove, must discard and replace infected program
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+10
+Malicious Software
+Anti-virus Evolution
+Early virus are simple hence small code is enough to remove virus
+Now complex viruses are present – need more strong anti-virus
+Generation
+First – Signature scanner
+Second – Heuristics
+Third – Identify action
+Fourth – combination pakage
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+11
+</NOTES>
+
+<NOTES>
+CSE313
+Cryptography & Network 
+Security
+Unit –III 
+Public Key Cryptography & RSA
+Ms.Ramya.S
+AP-III / SoCCSE313 –CRYPTOGRAPHY & NETWORK SECURITY 1
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 2•Public key or asymmetric algorithms rely on one key for encryption and a 
+different related key for decryption
+•Characteristics
+⁃It is computationally infeasible to determine the decryption key given only knowledge 
+of the cryptographic algorithms and encryption key
+•Public keycryptography have fiveimportant component
+⁃Plaintext
+⁃Encryption algorithm
+⁃Public and private key
+⁃Cipher text
+⁃Decryption algorithm
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 3
+
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 4
+
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 5•Requirements for public key cryptosystem
+⁃Receiver generate a key pair ( PUb and PRb)
+⁃C = E( PUb,M )
+⁃M = D( PRb,C ) = D[ PRb, E(PUb,M )]
+⁃Infeasible to know the private key from the public key
+⁃Infeasible to know original message from public key and CT
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 6
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 7
+
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 8
+
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 9
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 10
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 11•Possible attack in RSA algorithm
+⁃Brute Force Attack –To overcome this attack by choosing large key
+⁃In general 512 or 1024 bit length of e and d can be used
+⁃Probability of finding value 1/2^256 or 1/2^1024
+•Mathematical Attack –If chi(n) and e are known the d can be easily calculated
+⁃Timing Attack –Based on time to convert PT to CT and vice -versa the possible 
+range of e and d values are calculated
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 12
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 13•Possible attack in RSA algorithm
+⁃Chosen Cipher Text Attack –
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 14•Optimal Asymmetric Encryption Padding -OAEP
+
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 15•Diffie–Hellman Key Exchange
+⁃2 user to establish a secret key using public key method based on discrete log
+⁃This can achieved by establish an authentication between two users
+⁃After the key exchange, then using that key communication can be established 
+between 2 users
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 16•Diffie–Hellman Key Exchange
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 17•Diffie–Hellman Key Exchange
+
+Public Key Cryptography
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 18•Diffie–Hellman Key Exchange
+
+Man in the Middle Attack
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 19
+
+
+Man in the Middle Attack
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 20
+
+Elgamal Cryptosystem
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 21
+
+
+Elgamal Cryptosystem
+CSE313 –CRYPTOGRAPHY & NETWORK SECURITY 22
+</NOTES>
+
+<NOTES>
+CSE313Cryptography & Network SecurityUnit – IV Cryptographic Hash Function
+Ms.Ramya.S
+AP-III / SoC
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+1
+Hash Function
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+2
+Hash function
+Accepts a variable length block of data M as input
+Produces a fixed size hash value h = H(m)
+Kind of hash function needed for security application – Cryptographic hash function 
+Hash Function
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+3
+Cryptographic Hash Function
+Should computationally infeasible to find
+A data object maps to a pre-specified hash result (One way property)
+Two data objects maps to same hash result (Collision free property)
+Based on these two characteristics hash function is used in security aspects that to determine whether or not data has damaged
+
+
+
+Applications of Cryptographic Hash Function
+Hash functions are widely used in security application and Internet Protocol
+Message Authentication
+Used to verify the integrity of a message
+Message authentication – assures that data received exactly as sent
+Hash function used to provide message authentication and the hash function value  - Message digest
+Different ways to use hash functions for authentication
+
+
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+4
+Applications of Cryptographic Hash Function
+Message + hash – get encrypted using symmetric key
+
+
+
+Hash code encrypted using symmetric key + Message
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+5
+Applications of Cryptographic Hash Function
+Message + S – get hashed that can be combined with M
+
+
+
+Confidentiality included in previous method
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+6
+Digital Signature
+Similar to MAC
+Hash value of message is encrypted with user’s private key
+Anyone who knows the user’s public key can verify the integrity of message
+In case attacker wants to alter the message who need user’s private key
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+7
+Other Application of Hash Function
+Hash function commonly used to create one-way password file
+Hash of password stored by OS rather than the password itself
+Thus the actual password is not retrievable by the hacker
+When user enters a password the hash value of that password is compared to the stored hash value for verification
+Hash function used for intrusion detection and virus detection
+Store H(f) for each file on a system and secure the hash value
+Cryptographic hash function used to construct a pseudorandom function(PRF) or a pseudorandom number generator(PRNG)
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+8
+Two simple hash function
+Simple XOR and shifting (one bit circular shift)
+Assume the input is viewed sequence of n-bit block 
+Input is processed one block at a time in iterative manner produce n-bit hash function
+One of the simplest hash function is bit by bit XOR of every block
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+9
+Two simple hash function
+To improve performance of simple hash function by circular shift (rotate)
+Procedure for two simple hash function
+Initially set n-bit hash value to 0
+Process each successive n-bit block of data by
+Rotate the current hash value to left by one bit
+XOR the block into the hash value
+Simple XOR or rotated XOR is insufficient 
+To increase the performance, simple XOR applied to 64-bit blocks of message and then encrypt the entire message that used for cipher block chaining(CBC) mode
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+10
+Security Requirement
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+11
+Secure Hash Code 
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+12
+Secure Hash Algorithm
+Authentication algorithm
+Hash function
+Produced fixed length of value without any key
+Various versions – 
+SHA1 (128 bit)
+SHA-256 (256 bit)
+SHA-512 (512 bit)
+CSE313 – CRYPTOGRAPHY & NETWORK SECURITY
+13
+</NOTES>
+
+<NOTES>
+
+</NOTES>
+
+<NOTES>
+[Extraction Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}]
+</NOTES>
+
+<NOTES>
+Orinary Polynomial
+
+Polynomial Arithmetic with coefficient in Zp
+
+
+
+f(x) = 
+g(x) =
+Find the polynomial arithmetic over GF(2)
+
+
+
+The polynomial C(x) is said to be the GCD of a(x) and b(x) if, 
+   -  C(x) divides both a(x) and b(x)
+   -  Any divisor of a(x) and b(x) is a divisor of C(x)
+Euclidean Algorithm for Polynomial:
+a(x) = q1(x)b(x) + r1(x)
+r1(x) = a(x) mod b(x)
+b(x) = q2(x)r1(x) + r2(x)
+r2(x) = b(x) mod r1(x)
+r1(x) = q3(x)r2(x) + r3(x)
+r3(x) = r1(x) mod r2(x)
+rn-2(x) = qn(x)rn-1(x) + rn(x)
+rn(x) = rn-2(x) mod rn-1(x)
+rn-1(x) = qn+1(x)rn(x) + 0
+rn+1(x) = rn-1(x) mod rn(x) =0
+d(x) = gcd(a(x),b(x)) = rn(x)
+
+
+
+
+
+Find gcd(a(x),b(x) for a(x)=
+
+
+
+
+
+
+
+
+
+Find GCD of (x^3-2x+1) and (x^2-x-2) over GF(5)
+
+Find GCD of (x^3-2x+1) and (x^2-x-2) over GF(5)
+
+
+
+
+
+
+
+Set of polynomial in GF(2^n) a group of polynomicals of a degree n is defined as the modulus
+The modulus in this case act as a prime polynomial, which mean that no polynomial in the set can be divide this polynomial
+A prime polynomial cannot be factored into a polynomial with a degree less than n
+This prime polynomial we can call it as "irreducible polynomial"
+</NOTES>
+
+<NOTES>
+Orinary Polynomial
+
+Polynomial Arithmetic with coefficient in Zp
+
+
+
+f(x) = 
+g(x) =
+Find the polynomial arithmetic over GF(2)
+
+
+
+The polynomial C(x) is said to be the GCD of a(x) and b(x) if, 
+   -  C(x) divides both a(x) and b(x)
+   -  Any divisor of a(x) and b(x) is a divisor of C(x)
+Euclidean Algorithm for Polynomial:
+a(x) = q1(x)b(x) + r1(x)
+r1(x) = a(x) mod b(x)
+b(x) = q2(x)r1(x) + r2(x)
+r2(x) = b(x) mod r1(x)
+r1(x) = q3(x)r2(x) + r3(x)
+r3(x) = r1(x) mod r2(x)
+rn-2(x) = qn(x)rn-1(x) + rn(x)
+rn(x) = rn-2(x) mod rn-1(x)
+rn-1(x) = qn+1(x)rn(x) + 0
+rn+1(x) = rn-1(x) mod rn(x) =0
+d(x) = gcd(a(x),b(x)) = rn(x)
+</NOTES>
+
+<NOTES>
+Orinary Polynomial
+
+Polynomial Arithmetic with coefficient in Zp
+
+
+
+f(x) = 
+g(x) =
+Find the polynomial arithmetic over GF(2)
+
+
+
+The polynomial C(x) is said to be the GCD of a(x) and b(x) if, 
+   -  C(x) divides both a(x) and b(x)
+   -  Any divisor of a(x) and b(x) is a divisor of C(x)
+Euclidean Algorithm for Polynomial:
+a(x) = q1(x)b(x) + r1(x)
+r1(x) = a(x) mod b(x)
+b(x) = q2(x)r1(x) + r2(x)
+r2(x) = b(x) mod r1(x)
+r1(x) = q3(x)r2(x) + r3(x)
+r3(x) = r1(x) mod r2(x)
+rn-2(x) = qn(x)rn-1(x) + rn(x)
+rn(x) = rn-2(x) mod rn-1(x)
+rn-1(x) = qn+1(x)rn(x) + 0
+rn+1(x) = rn-1(x) mod rn(x) =0
+d(x) = gcd(a(x),b(x)) = rn(x)
+
+
+
+
+
+Find gcd(a(x),b(x) for a(x)=
+
+
+
+
+
+
+
+
+
+Find GCD of (x^3-2x+1) and (x^2-x-2) over GF(5)
+
+Find GCD of (x^3-2x+1) and (x^2-x-2) over GF(5)
+
+
+
+
+
+
+
+Set of polynomial in GF(2^n) a group of polynomicals of a degree n is defined as the modulus
+The modulus in this case act as a prime polynomial, which mean that no polynomial in the set can be divide this polynomial
+A prime polynomial cannot be factored into a polynomial with a degree less than n
+This prime polynomial we can call it as "irreducible polynomial"
+
+
+
+
+
+
+
+
+
+Polynomial arithmetic modulo table (x^3+x+1) over GF(2^3)
+</NOTES>
+
+<NOTES>
+[Extraction Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}]
+</NOTES>
+
+<NOTES>
+[Extraction Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}]
+</NOTES>
+
+<NOTES>
+
+</NOTES>
+
+<NOTES>
+Elgamal Digital Signature Scheme
+</NOTES>
