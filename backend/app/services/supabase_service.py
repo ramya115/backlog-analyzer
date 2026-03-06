@@ -352,3 +352,43 @@ class SupabaseService:
             )
             updated += 1
         return updated
+
+    async def seed_students(self) -> dict:
+        """Idempotently seed a small set of demo students for presentations.
+
+        This uses PostgREST with the service role key and Prefer: resolution=merge-duplicates
+        so repeated calls are safe and will update existing rows.
+        """
+        students_url = f"{self.url}/rest/v1/students"
+        demo_rows = [
+            {
+                "regno": "128003202",
+                "email": "128003202@sastra.ac.in",
+                "full_name": "Demo Student One",
+                "department": "CSE",
+                "password": "demo",
+                "arrear_codes": ["CS501", "CS502"]
+            },
+            {
+                "regno": "128003203",
+                "email": "128003203@sastra.ac.in",
+                "full_name": "Demo Student Two",
+                "department": "CSE",
+                "password": "demo",
+                "arrear_codes": ["CS501"]
+            }
+        ]
+
+        headers = {**self.auth_headers, "Prefer": "resolution=merge-duplicates"}
+
+        loop = asyncio.get_event_loop()
+
+        def _do_seed():
+            resp = requests.post(students_url, json=demo_rows, headers=headers, timeout=30)
+            try:
+                return {"status_code": resp.status_code, "text": resp.text, "ok": resp.ok}
+            except Exception:
+                return {"status_code": getattr(resp, 'status_code', None), "ok": False}
+
+        result = await loop.run_in_executor(None, _do_seed)
+        return {"seeded": True, "result": result}
