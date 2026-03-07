@@ -56,7 +56,7 @@ class UniversalExtractor:
             api_key=settings.GEMINI_API_KEY,
             http_options={"api_version": "v1"},
         )
-        self.model_id = "gemini-1.5-flash"
+        self.model_id = "gemini-2.5-flash"
 
     async def extract_content_from_bytes(self, file_bytes: bytes, filename: str, category: CategoryType) -> str:
         """
@@ -113,7 +113,7 @@ class UniversalExtractor:
 
     async def _extract_image_ocr_bytes(self, buf: io.BytesIO) -> str:
         """
-        AI-Powered OCR: Uses Gemini 1.5 Flash to 'read' images.
+        AI-Powered OCR: Uses Gemini 2.5 Flash to 'read' images.
         Includes built-in retry logic for rate-limit handling.
         """
         def _call_vision_api():
