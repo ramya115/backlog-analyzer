@@ -83,7 +83,7 @@ function Dashboard({
   useEffect(() => {
     if (!userEmail) return;
     const encoded = encodeURIComponent(userEmail);
-    fetch(`http://127.0.0.1:8000/student/profile/${encoded}`)
+    fetch(`https://backlog-analyzer.onrender.com/student/profile/${encoded}`)
       .then(async (res) => {
         if (!res.ok) throw new Error(`Profile not found for ${userEmail}`);
         return res.json() as Promise<StudentProfile>;
@@ -108,7 +108,7 @@ function Dashboard({
     Promise.allSettled(
       codes.map(async (code) => {
         try {
-          const res = await fetch(`http://127.0.0.1:8000/student/report?subject_code=${code}`);
+          const res = await fetch(`https://backlog-analyzer.onrender.com/student/report?subject_code=${code}`);
           if (!res.ok) return;
           const data = await res.json();
           if (data.subject_name) nameCache[code] = data.subject_name;
