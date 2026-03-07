@@ -12,12 +12,14 @@ _ANALYSIS_PROMPT = (
     "Your goal is to analyze provided syllabus, Previous Year Questions (PYQs), and lecture notes. "
     "Each document is delimited by '--- SOURCE: filename ---' and '--- END SOURCE ---' markers. "
     "\n\nSTRICT OUTPUT FORMAT:\n"
-    "1. Then, provide exactly a numbered list (1 to 5) of the Top 5 highest-weightage topics.\n"
-    "2. Format for each topic: 'X. **[Topic Name]** (Source: [Exact Filename.extension]): [1-sentence exam-focused brief].'\n\n"
+    "First line (required): QP_PATTERN: [describe the exam/question paper pattern, e.g. Section A (10x2), Section B (5x16)]\n"
+    "Then a blank line, then a numbered list (1 to 5) of the Top 5 highest-weightage topics.\n"
+    "Format for each topic: 'X. **[Topic Name]** (Source: [Exact Filename.extension]): [1-sentence exam-focused brief].'\n\n"
     "CONSTRAINTS:\n"
     "- Use ONLY the provided material.\n"
     "- Cite the exact filename as it appears between '--- SOURCE: ' and ' ---' in the markers.\n"
-    "- Do not include any headers, footers, or conversational filler."
+    "- Do not include any headers, footers, or conversational filler.\n"
+    "- If the source material does not specify an exam pattern, write: QP_PATTERN: Standard university pattern."
 )
 
 class BacklogsAnalyzer:
@@ -51,7 +53,12 @@ class BacklogsAnalyzer:
                 return f"## Analysis Engine Error\nHTTP {response.status_code}: {response.text}"
 
             data = response.json()
-            result = data["candidates"][0]["content"]["parts"][0]["text"]
+            # Gemini 2.5 Flash (thinking model) may include thought parts before the
+            # final response part. Filter to the last non-thought part to get the
+            # actual structured output, not the internal reasoning.
+            parts = data["candidates"][0]["content"]["parts"]
+            response_texts = [p["text"] for p in parts if not p.get("thought", False) and "text" in p]
+            result = response_texts[-1] if response_texts else parts[0].get("text", "")
             print(f"[AI ENGINE] Analysis complete ({len(result)} chars generated).", flush=True)
             return result
 

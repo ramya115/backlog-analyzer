@@ -312,8 +312,8 @@ class SupabaseService:
 
     async def create_subject_placeholder(self, subject_code: str, subject_name: str, professor_email: str) -> None:
         """Creates a placeholder analysis_reports row for a new subject (no material yet)."""
-        url = f"{self.url}/rest/v1/analysis_reports"
-        headers = {**self.auth_headers, "Prefer": "resolution=merge-duplicates"}
+        url = f"{self.url}/rest/v1/analysis_reports?on_conflict=subject_code"
+        headers = {**self.auth_headers, "Prefer": "resolution=merge-duplicates,return=minimal"}
         payload = {
             "subject_code": subject_code,
             "subject_name": subject_name,

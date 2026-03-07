@@ -62,8 +62,12 @@ def _parse_topics_and_qp(markdown: str) -> tuple[list[str], str]:
         stripped = line.strip()
         if stripped.upper().startswith("QP_PATTERN:"):
             qp_pattern = stripped[len("QP_PATTERN:"):].strip()
-        elif re.match(r"^[1-5]\.", stripped):
-            topics.append(stripped)
+        # Match '1. Topic', '**1. Topic', or '1) Topic' — Gemini sometimes
+        # wraps the leading number in bold markdown (**1. ...) so allow
+        # optional leading asterisks before the digit.
+        elif re.match(r"^\*{0,2}[1-5][\.)]", stripped):
+            # Strip any leading bold markers so the stored string is clean
+            topics.append(re.sub(r"^\*+", "", stripped))
     
     # Ensuring we always return exactly 5 slots for UI stability
     while len(topics) < 5:
